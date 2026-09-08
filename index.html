@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulir Isian Biodata Pekerja</title>
-  <!-- Tailwind CSS -->
+  <title>Formulir Isian Biodata Pekerja - BIOCAKAR</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Font Inter / Plus Jakarta Sans -->
+  <!-- Google Font Plus Jakarta Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
@@ -32,7 +32,7 @@
           HRD
         </div>
         <div>
-          <h1 class="text-base font-bold text-white leading-tight">FORMULIR BIODATA PEKERJA</h1>
+          <h1 class="text-base font-bold text-white leading-tight">FORMULIR BIODATA PEKERJA (BIOCAKAR)</h1>
           <p class="text-xs text-slate-400">Pembaruan Data Karyawan & Rekam Identitas</p>
         </div>
       </div>
@@ -233,13 +233,14 @@
 
   <!-- FOOTER -->
   <footer class="py-4 text-center text-xs text-slate-500 border-t border-slate-800/80">
-    <p>&copy; 2026 Employee Information System &bull; Management Portal</p>
+    <p>&copy; 2026 BIOCAKAR &bull; Employee Information System</p>
   </footer>
 
-  <!-- JAVASCRIPT -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
     // URL Web App Google Apps Script
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyHIwQsp0aIJseR5clCyFHpeL60Iwd6i3is7GdGANoW_PSihZonDe_3P5CkdlKvZ0U7/exec";
+    // Pastikan URL ini sesuai dengan URL Web App terbaru yang di-deploy dengan akses "Anyone" (Siapa saja)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby-XuMtOqib4INWZqOdH3-ql-YQmPFH4C7YgxUatFdxDvxyLG13cR0exDtAaH_Gz-Y/exec";
 
     function handleFormSubmit(event) {
       event.preventDefault();
@@ -294,9 +295,14 @@
 
       fetch(SCRIPT_URL, {
         method: 'POST',
-        body: formData
+        body: new URLSearchParams(formData)
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Respons jaringan tidak oke');
+        }
+        return response.json();
+      })
       .then(data => {
         btnSubmit.disabled = false;
         btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
@@ -306,14 +312,18 @@
           showModal('Pengiriman Berhasil!', 'Data pekerja telah tersimpan di basis data sistem HRD.', true);
           form.reset();
         } else {
-          showModal('Pengiriman Gagal!', 'Terjadi kesalahan sistem: ' + (data.error || 'Gagal menyimpan'), false);
+          showModal('Pengiriman Gagal!', 'Penyebab: ' + (data.error || 'Gagal menyimpan data ke Spreadsheet'), false);
         }
       })
       .catch(error => {
         btnSubmit.disabled = false;
         btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
         btnText.innerText = "Simpan & Kirim Data Pekerja";
-        showModal('Koneksi Terganggu!', 'Tidak dapat terhubung ke server. Periksa jaringan internet Anda.', false);
+        showModal(
+          'Koneksi / Akses Terganggu!', 
+          'Gagal terhubung ke Google Script. Mohon pastikan di Apps Script -> Deploy -> New Deployment -> "Who has access" sudah diubah ke "Anyone" (Siapa saja).', 
+          false
+        );
       });
     }
 
@@ -323,8 +333,6 @@
       const container = row.parentElement;
       if (container.children.length > 1) {
         row.remove();
-      } else {
-        alert('Setidaknya harus menyisakan 1 baris isian.');
       }
     }
 
