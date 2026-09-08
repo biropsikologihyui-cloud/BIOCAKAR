@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Isian Biodata Pekerja</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font Inter / Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .gradient-header {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between">
+
+  <!-- NOTIFICATION BANNER -->
+  <div class="bg-blue-600/90 text-white text-center py-2 px-4 text-xs font-medium sticky top-0 z-50 shadow-md">
+    🚀 <strong>Formulir Data Pekerja:</strong> Mohon isi seluruh data diri dan riwayat pengalaman Anda secara lengkap dan benar.
+  </div>
+
+  <!-- HEADER -->
+  <header class="gradient-header border-b border-slate-800 py-4 px-6 sticky top-9 z-40">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="bg-blue-600/20 text-blue-400 p-2.5 rounded-xl border border-blue-500/30 font-black text-lg">
+          HRD
+        </div>
+        <div>
+          <h1 class="text-base font-bold text-white leading-tight">FORMULIR BIODATA PEKERJA</h1>
+          <p class="text-xs text-slate-400">Pembaruan Data Karyawan & Rekam Identitas</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-4xl mx-auto w-full px-4 py-6 flex-1">
+    <form id="biodataForm" onsubmit="handleFormSubmit(event)" class="bg-slate-800/90 border border-slate-700/80 p-6 sm:p-8 rounded-2xl shadow-2xl space-y-6 backdrop-blur-sm">
+      
+      <!-- A. INFORMASI KEPEKERJAAN & IDENTITAS -->
+      <div class="border-b border-slate-700 pb-4">
+        <h2 class="text-lg font-bold text-blue-400">A. Informasi Kepekerjaan & Identitas</h2>
+        <p class="text-xs text-slate-400">Data nomor induk, posisi kerja, dan identitas resmi</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">NIK / ID Karyawan</label>
+          <input type="text" name="nik_karyawan" required placeholder="Cth: EMP-2026-089" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">No. KTP (NIK)</label>
+          <input type="text" name="no_ktp" required placeholder="16 digit NIK KTP" maxlength="16" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Posisi / Jabatan</label>
+          <input type="text" name="posisi" required placeholder="Cth: Staff Operasional" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Departemen / Divisi</label>
+          <input type="text" name="departemen" required placeholder="Cth: Logistics / HR" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Nama Lengkap (Sesuai KTP)</label>
+          <input type="text" name="nama_lengkap" required placeholder="Nama lengkap beserta gelar jika ada" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Jenis Kelamin</label>
+          <select name="jenis_kelamin" required class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Tempat, Tanggal Lahir</label>
+          <input type="text" name="ttl" required placeholder="Cth: Jakarta, 15 Agustus 1995" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Agama</label>
+          <select name="agama" required class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <option value="Islam">Islam</option>
+            <option value="Kristen">Kristen</option>
+            <option value="Katolik">Katolik</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Buddha">Buddha</option>
+            <option value="Konghucu">Konghucu</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Status Perkawinan</label>
+          <select name="status_perkawinan" required class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <option value="Belum Menikah">Belum Menikah</option>
+            <option value="Menikah">Menikah</option>
+            <option value="Cerai">Cerai</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">No. HP / WhatsApp</label>
+          <input type="tel" name="telp" required placeholder="08xxxxxxxxxx" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Email Pribadi</label>
+          <input type="email" name="email" required placeholder="nama@gmail.com" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Alamat Domisili Sekarang</label>
+          <textarea name="alamat" rows="2" required placeholder="Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        </div>
+      </div>
+
+      <!-- B. RIWAYAT PENDIDIKAN & PENGALAMAN KERJA -->
+      <div class="border-b border-slate-700 pt-4 pb-4">
+        <h2 class="text-lg font-bold text-blue-400">B. Pendidikan & Pengalaman Kerja</h2>
+        <p class="text-xs text-slate-400">Tambahkan riwayat formal dan pengalaman profesional Anda secara dinamis.</p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- PENDIDIKAN DINAMIS -->
+        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700/60 space-y-3">
+          <div class="flex justify-between items-center">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Riwayat Pendidikan Formal</label>
+              <p class="text-[11px] text-slate-400">Pendidikan terakhir atau jenjang sebelumnya</p>
+            </div>
+            <button type="button" onclick="addPendidikanRow()" class="px-3 py-1.5 bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 text-xs font-bold rounded-lg border border-blue-500/40 transition-all cursor-pointer">
+              + Tambah Pendidikan
+            </button>
+          </div>
+          <div id="pendidikanContainer" class="space-y-3">
+            <div class="pendidikan-row grid grid-cols-1 sm:grid-cols-12 gap-2 bg-slate-800/80 p-3 rounded-lg border border-slate-700 items-center">
+              <input type="text" placeholder="Nama Instansi / Sekolah" class="col-span-1 sm:col-span-4 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-name" required>
+              <input type="text" placeholder="Jurusan / Program Studi" class="col-span-1 sm:col-span-3 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-major" required>
+              <input type="text" placeholder="Tahun Lulus" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-period" required>
+              <input type="text" placeholder="IPK / Nilai" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-score">
+              <button type="button" onclick="removeRow(this)" class="col-span-1 sm:col-span-1 text-rose-400 hover:text-rose-300 p-2 text-center text-xs font-bold transition-all cursor-pointer">✕</button>
+            </div>
+          </div>
+          <input type="hidden" id="riwayat_pendidikan" name="riwayat_pendidikan">
+        </div>
+
+        <!-- PENGALAMAN KERJA DINAMIS -->
+        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700/60 space-y-3">
+          <div class="flex justify-between items-center">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Pengalaman Kerja Sebelumnya</label>
+              <p class="text-[11px] text-slate-400">Cantumkan dari pekerjaan yang paling terbaru</p>
+            </div>
+            <button type="button" onclick="addKerjaRow()" class="px-3 py-1.5 bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 text-xs font-bold rounded-lg border border-blue-500/40 transition-all cursor-pointer">
+              + Tambah Pengalaman
+            </button>
+          </div>
+          <div id="kerjaContainer" class="space-y-3">
+            <div class="kerja-row grid grid-cols-1 sm:grid-cols-12 gap-2 bg-slate-800/80 p-3 rounded-lg border border-slate-700 items-center">
+              <input type="text" placeholder="Nama Perusahaan" class="col-span-1 sm:col-span-4 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-company" required>
+              <input type="text" placeholder="Jabatan / Posisi" class="col-span-1 sm:col-span-3 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-position" required>
+              <input type="text" placeholder="Masa Kerja (Cth: 2022-2024)" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-period" required>
+              <input type="text" placeholder="Gaji Terakhir / Alasan Resign" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-note">
+              <button type="button" onclick="removeRow(this)" class="col-span-1 sm:col-span-1 text-rose-400 hover:text-rose-300 p-2 text-center text-xs font-bold transition-all cursor-pointer">✕</button>
+            </div>
+          </div>
+          <input type="hidden" id="pengalaman_kerja" name="pengalaman_kerja">
+        </div>
+
+        <!-- KETERAMPILAN & SERTIFIKASI -->
+        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-700/60 space-y-3">
+          <div class="flex justify-between items-center">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Keterampilan & Sertifikasi</label>
+              <p class="text-[11px] text-slate-400">Keahlian teknis, bahasa, atau sertifikat profesional</p>
+            </div>
+            <button type="button" onclick="addSkillRow()" class="px-3 py-1.5 bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 text-xs font-bold rounded-lg border border-blue-500/40 transition-all cursor-pointer">
+              + Tambah Keahlian
+            </button>
+          </div>
+          <div id="skillContainer" class="space-y-3">
+            <div class="skill-row grid grid-cols-1 sm:grid-cols-12 gap-2 bg-slate-800/80 p-3 rounded-lg border border-slate-700 items-center">
+              <input type="text" placeholder="Bidang / Nama Sertifikasi" class="col-span-1 sm:col-span-6 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white skill-title" required>
+              <input type="text" placeholder="Tingkat Kemahiran / Lembaga Penerbit" class="col-span-1 sm:col-span-5 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white skill-detail" required>
+              <button type="button" onclick="removeRow(this)" class="col-span-1 sm:col-span-1 text-rose-400 hover:text-rose-300 p-2 text-center text-xs font-bold transition-all cursor-pointer">✕</button>
+            </div>
+          </div>
+          <input type="hidden" id="keterampilan" name="keterampilan">
+        </div>
+      </div>
+
+      <!-- C. KONTAK DARURAT & KELUARGA -->
+      <div class="border-b border-slate-700 pt-4 pb-4">
+        <h2 class="text-lg font-bold text-blue-400">C. Kontak Darurat</h2>
+        <p class="text-xs text-slate-400">Pihak yang dapat dihubungi saat kondisi darurat/urgent</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Nama Kontak Darurat</label>
+          <input type="text" name="kontak_darurat_nama" required placeholder="Cth: Budi Santoso" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Hubungan</label>
+          <input type="text" name="kontak_darurat_hubungan" required placeholder="Cth: Orang Tua / Suami / Istri / Saudara" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">No. Telepon Darurat</label>
+          <input type="tel" name="kontak_darurat_telp" required placeholder="08xxxxxxxxxx" class="w-full px-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+      </div>
+
+      <!-- TOMBOL SUBMIT -->
+      <div class="pt-4">
+        <button type="submit" id="btnSubmit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2 cursor-pointer">
+          <span id="btnText">Simpan & Kirim Data Pekerja</span>
+          <span id="btnArrow">&rarr;</span>
+        </button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- CUSTOM MODAL PESAN -->
+  <div id="customModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-800 border border-slate-700 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl text-center">
+      <div id="modalIcon" class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mx-auto text-xl font-bold">✓</div>
+      <h3 id="modalTitle" class="text-lg font-bold text-white">Status Pengiriman</h3>
+      <p id="modalMessage" class="text-xs text-slate-300 leading-relaxed">Pesan status akan muncul di sini.</p>
+      <button onclick="closeModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold py-3 rounded-xl transition-all cursor-pointer">Tutup</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="py-4 text-center text-xs text-slate-500 border-t border-slate-800/80">
+    <p>&copy; 2026 Employee Information System &bull; Management Portal</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // URL Web App Google Apps Script
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyHIwQsp0aIJseR5clCyFHpeL60Iwd6i3is7GdGANoW_PSihZonDe_3P5CkdlKvZ0U7/exec";
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      // 1. Kompilasi Pendidikan
+      let pendidikanArr = [];
+      document.querySelectorAll('.pendidikan-row').forEach(row => {
+        let school = row.querySelector('.school-name').value;
+        let major = row.querySelector('.school-major').value;
+        let period = row.querySelector('.school-period').value;
+        let score = row.querySelector('.school-score').value || '-';
+        if (school) {
+          pendidikanArr.push(`${school} (${major}) - Lulus ${period} [IPK/Nilai: ${score}]`);
+        }
+      });
+      document.getElementById('riwayat_pendidikan').value = pendidikanArr.join(" | ");
+
+      // 2. Kompilasi Pengalaman Kerja
+      let kerjaArr = [];
+      document.querySelectorAll('.kerja-row').forEach(row => {
+        let comp = row.querySelector('.kerja-company').value;
+        let pos = row.querySelector('.kerja-position').value;
+        let period = row.querySelector('.kerja-period').value;
+        let note = row.querySelector('.kerja-note').value || '-';
+        if (comp) {
+          kerjaArr.push(`${comp} - ${pos} (${period}) [Ket: ${note}]`);
+        }
+      });
+      document.getElementById('pengalaman_kerja').value = kerjaArr.join(" | ");
+
+      // 3. Kompilasi Keterampilan
+      let skillArr = [];
+      document.querySelectorAll('.skill-row').forEach(row => {
+        let title = row.querySelector('.skill-title').value;
+        let detail = row.querySelector('.skill-detail').value;
+        if (title) {
+          skillArr.push(`${title} (${detail})`);
+        }
+      });
+      document.getElementById('keterampilan').value = skillArr.join(" | ");
+
+      // Animasi Loading Tombol Submit
+      const btnSubmit = document.getElementById('btnSubmit');
+      const btnText = document.getElementById('btnText');
+      btnSubmit.disabled = true;
+      btnSubmit.classList.add('opacity-50', 'cursor-not-allowed');
+      btnText.innerText = "Proses Menyimpan...";
+
+      // Pengiriman Data menggunakan Fetch API
+      const form = document.getElementById('biodataForm');
+      const formData = new FormData(form);
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
+        btnText.innerText = "Simpan & Kirim Data Pekerja";
+
+        if (data.result === 'success') {
+          showModal('Pengiriman Berhasil!', 'Data pekerja telah tersimpan di basis data sistem HRD.', true);
+          form.reset();
+        } else {
+          showModal('Pengiriman Gagal!', 'Terjadi kesalahan sistem: ' + (data.error || 'Gagal menyimpan'), false);
+        }
+      })
+      .catch(error => {
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
+        btnText.innerText = "Simpan & Kirim Data Pekerja";
+        showModal('Koneksi Terganggu!', 'Tidak dapat terhubung ke server. Periksa jaringan internet Anda.', false);
+      });
+    }
+
+    // UTILITAS BARIS DINAMIS
+    function removeRow(btn) {
+      const row = btn.closest('.grid');
+      const container = row.parentElement;
+      if (container.children.length > 1) {
+        row.remove();
+      } else {
+        alert('Setidaknya harus menyisakan 1 baris isian.');
+      }
+    }
+
+    function addPendidikanRow() {
+      const container = document.getElementById('pendidikanContainer');
+      const div = document.createElement('div');
+      div.className = 'pendidikan-row grid grid-cols-1 sm:grid-cols-12 gap-2 bg-slate-800/80 p-3 rounded-lg border border-slate-700 items-center';
+      div.innerHTML = `
+        <input type="text" placeholder="Nama Instansi / Sekolah" class="col-span-1 sm:col-span-4 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-name" required>
+        <input type="text" placeholder="Jurusan / Program Studi" class="col-span-1 sm:col-span-3 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-major" required>
+        <input type="text" placeholder="Tahun Lulus" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-period" required>
+        <input type="text" placeholder="IPK / Nilai" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white school-score">
+        <button type="button" onclick="removeRow(this)" class="col-span-1 sm:col-span-1 text-rose-400 hover:text-rose-300 p-2 text-center text-xs font-bold transition-all cursor-pointer">✕</button>
+      `;
+      container.appendChild(div);
+    }
+
+    function addKerjaRow() {
+      const container = document.getElementById('kerjaContainer');
+      const div = document.createElement('div');
+      div.className = 'kerja-row grid grid-cols-1 sm:grid-cols-12 gap-2 bg-slate-800/80 p-3 rounded-lg border border-slate-700 items-center';
+      div.innerHTML = `
+        <input type="text" placeholder="Nama Perusahaan" class="col-span-1 sm:col-span-4 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-company" required>
+        <input type="text" placeholder="Jabatan / Posisi" class="col-span-1 sm:col-span-3 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-position" required>
+        <input type="text" placeholder="Masa Kerja (Cth: 2022-2024)" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-period" required>
+        <input type="text" placeholder="Gaji Terakhir / Alasan Resign" class="col-span-1 sm:col-span-2 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white kerja-note">
+        <button type="button" onclick="removeRow(this)" class="col-span-1 sm:col-span-1 text-rose-400 hover:text-rose-300 p-2 text-center text-xs font-bold transition-all cursor-pointer">✕</button>
+      `;
+      container.appendChild(div);
+    }
+
+    function addSkillRow() {
+      const container = document.getElementById('skillContainer');
+      const div = document.createElement('div');
+      div.className = 'skill-row grid grid-cols-1 sm:grid-cols-12 gap-2 bg-slate-800/80 p-3 rounded-lg border border-slate-700 items-center';
+      div.innerHTML = `
+        <input type="text" placeholder="Bidang / Nama Sertifikasi" class="col-span-1 sm:col-span-6 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white skill-title" required>
+        <input type="text" placeholder="Tingkat Kemahiran / Lembaga Penerbit" class="col-span-1 sm:col-span-5 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white skill-detail" required>
+        <button type="button" onclick="removeRow(this)" class="col-span-1 sm:col-span-1 text-rose-400 hover:text-rose-300 p-2 text-center text-xs font-bold transition-all cursor-pointer">✕</button>
+      `;
+      container.appendChild(div);
+    }
+
+    // UTILITAS MODAL STATUS
+    function showModal(title, message, isSuccess) {
+      const modal = document.getElementById('customModal');
+      const icon = document.getElementById('modalIcon');
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalMessage').innerText = message;
+
+      if (isSuccess) {
+        icon.className = "w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto text-xl font-bold border border-emerald-500/30";
+        icon.innerText = "✓";
+      } else {
+        icon.className = "w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center mx-auto text-xl font-bold border border-rose-500/30";
+        icon.innerText = "✕";
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('customModal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
